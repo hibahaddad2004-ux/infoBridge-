@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Bon Réception WMS</title>
+<link rel="stylesheet" href="reception.css">
+<link rel="stylesheet" href="bon_réception_wms.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+   <!-- SIDEBAR -->
+   <div class="sidebar">
+
+      <img src="logoInfoBridge.png" class="logo">
+
+      <a class="menu-item" href="index.html">Tableau de bord</a>
+      <a class="menu-item" href="infobridge_dashboard.html">Planning vols</a>
+      <a class="menu-item" href="bons_livraison.html">Bons de livraison</a>
+      <a class="menu-item" href="reception.html">Réceptions</a>
+      <a class="menu-item active" href="bon_reception_wms.html">Bon Réception WMS</a>
+      <a class="menu-item" href="client.html">client</a>
+      <a class="menu-item" href="historique.html">Historique</a>
+
+   </div>
+
+
+   <!-- CONTENU -->
+   <div class="main">
+
+      <h2>Bon de Réception WMS</h2>
+
+      <!-- DOCUMENT -->
+      <div class="card">
+         <div id="wmsDoc"></div>
+      </div>
+
+      <!-- CASE ENVOI WMS -->
+      <div class="card createWMSBox">
+
+         <h3>Envoyer vers le système WMS</h3>
+
+         <div class="dropZone">
+
+            <p>Préparer l’envoi du bon de réception WMS</p>
+
+            <button class="btnCreateWMS" onclick="sendToWMS()">
+               Envoyer
+            </button>
+
+         </div>
+
+      </div>
+
+   </div>
+
+</div>
+
+<script src="bon_reception_wms.js"></script>
+
+</body>
+</html>

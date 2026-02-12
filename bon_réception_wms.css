@@ -1,0 +1,307 @@
+/* ===== GLOBAL ===== */
+
+body{
+ font-family:"Segoe UI";
+ background:#eef2f7;
+ margin:0;
+}
+
+.main{
+ padding:20px 30px;
+}
+
+h2{
+ margin-bottom:20px;
+}
+
+/* ===== LAYOUT ===== */
+
+.layout{
+ display:flex;
+ align-items:flex-start;
+}
+
+.sidebar{
+ width:240px;
+ min-height:100vh;
+ background:white;
+ padding:30px 20px;
+ box-shadow:2px 0 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+ width:140px;
+}
+
+.menu-item{
+ display:block;
+ padding:12px 15px;
+ border-radius:10px;
+ color:#2c3e50;
+ text-decoration:none;
+ margin-bottom:10px;
+ font-weight:500;
+ transition:0.2s;
+}
+
+.menu-item:hover{
+ background:#eef2f7;
+}
+
+.menu-item.active{
+ background:#dbe7ff;
+ color:#2563eb;
+ font-weight:600;
+}
+
+/* ===== CARD ===== */
+
+.card{
+ background:white;
+ border-radius:20px;
+ padding:25px;
+ margin-bottom:25px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+ width:100%;
+ max-width:1000px;
+}
+
+/* ===== TABLE ===== */
+
+table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+th{
+ text-align:left;
+ color:#7a8aa0;
+ padding:15px;
+ font-size:14px;
+}
+
+td{
+ padding:15px;
+ border-top:1px solid #eef2f7;
+}
+
+input, select{
+ padding:8px;
+ border-radius:8px;
+ border:1px solid #dde3ee;
+}
+
+/* ===== BUTTONS ===== */
+
+.btnPrimary{
+ background:#3b82f6;
+ color:white;
+ border:none;
+ padding:14px 25px;
+ border-radius:12px;
+ font-weight:600;
+ margin-top:20px;
+ cursor:pointer;
+}
+
+.btnPrimary:hover{
+ background:#2563eb;
+}
+
+/* ===== CREATE WMS BOX (Réception + BR WMS) ===== */
+
+.createWMSBox h3{
+ margin-bottom:20px;
+}
+
+.dropZone{
+ border:2px dashed #2563eb;
+ border-radius:16px;
+ padding:50px;
+ text-align:center;
+ background:#fafafa;
+}
+
+.dropZone p{
+ margin-bottom:20px;
+ font-size:16px;
+ color:#444;
+}
+
+.btnCreateWMS{
+ background:#2563eb;
+ color:white;
+ border:none;
+ padding:14px 32px;
+ border-radius:12px;
+ font-size:16px;
+ font-weight:600;
+ cursor:pointer;
+ transition:0.3s;
+}
+
+.btnCreateWMS:hover{
+ background:#1e4fd6;
+}
+
+/* ===== WMS DOCUMENT ===== */
+
+/* ===== WMS DOCUMENT PRO ===== */
+
+.wmsDocument{
+ background:#ffffff;
+ padding:50px;
+ border-radius:18px;
+ box-shadow:0 15px 40px rgba(0,0,0,0.06);
+ border:1px solid #eef2f7;
+}
+
+/* HEADER */
+
+.wmsHeader{
+ display:flex;
+ align-items:center;
+ gap:25px;
+ padding-bottom:20px;
+ border-bottom:2px solid #eef2f7;
+ margin-bottom:30px;
+}
+
+.wmsLogo{
+ width:150px;
+ height:auto;
+}
+
+.wmsHeader h3{
+ margin:0;
+ font-size:22px;
+ font-weight:700;
+ color:#111827;
+}
+
+.wmsHeader p{
+ margin:3px 0;
+ font-size:14px;
+ color:#6b7280;
+}
+
+/* TITRE DOCUMENT */
+
+.wmsTitle{
+ text-align:center;
+ font-size:42px;
+ font-weight:900;
+ letter-spacing:2px;
+ margin:40px 0;
+ color:#111827;
+}
+
+/* INFOS GRID */
+
+.wmsInfoGrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:30px;
+ margin-bottom:30px;
+ padding:25px;
+ background:#f8fafc;
+ border-radius:14px;
+ border:1px solid #eef2f7;
+}
+
+.wmsInfoGrid p{
+ margin:6px 0;
+ font-size:15px;
+ color:#374151;
+}
+
+.wmsInfoGrid strong{
+ color:#111827;
+}
+
+/* TABLE ERP STYLE */
+
+.wmsTable{
+ width:100%;
+ border-collapse:collapse;
+ margin-top:20px;
+ border-radius:14px;
+ overflow:hidden;
+}
+
+.wmsTable th{
+ background:#2563eb;
+ color:white;
+ padding:16px;
+ font-size:14px;
+ font-weight:600;
+ letter-spacing:0.5px;
+}
+
+.wmsTable td{
+ padding:15px;
+ border-bottom:1px solid #eef2f7;
+ font-size:14px;
+ color:#374151;
+}
+
+.wmsTable tr:hover{
+ background:#f8fafc;
+}
+
+/* FOOTER SIGNATURE */
+
+.wmsFooter{
+ margin-top:50px;
+ display:flex;
+ justify-content:space-between;
+ gap:50px;
+}
+
+.wmsFooter p{
+ font-weight:600;
+ color:#111827;
+}
+
+.signatureBox{
+ height:80px;
+ border-bottom:2px solid #374151;
+ margin-top:25px;
+ width:260px;
+}
+
+/* PRINT STYLE BONUS */
+
+@media print{
+
+ body{
+  background:white;
+ }
+
+ .sidebar,
+ .createWMSBox{
+  display:none;
+ }
+
+ .card{
+  box-shadow:none;
+  border:none;
+ }
+
+ .wmsDocument{
+  box-shadow:none;
+  border:none;
+ }
+}
+.wmsDocument{
+ background:#f8fafc !important;
+ border:1px solid #eef2f7;
+}
+.wmsTitle{
+ text-align:center;
+ font-size:42px;
+ font-weight:900;
+ letter-spacing:2px;
+ margin:40px 0;
+ color:#111827;
+}

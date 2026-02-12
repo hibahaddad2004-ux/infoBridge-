@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoBridge Dashboard</title>
+
+<style>
+
+/* ===== RESET ===== */
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+ background: linear-gradient(#e9eef7,#f7f9fc);
+ display:flex;
+ min-height:100vh;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+ width:240px;
+ background:white;
+ padding:25px 20px;
+ box-shadow:2px 0 20px rgba(0,0,0,0.05);
+}
+
+.logo img{
+ max-width:100%;
+}
+
+/* ===== MENU ===== */
+
+.menu-item{
+ display:block;
+ padding:12px 15px;
+ border-radius:10px;
+ margin-bottom:8px;
+ color:#475569;
+ text-decoration:none;
+ transition:.2s;
+}
+
+.menu-item:hover{
+ background:#eef2ff;
+ color:#2563eb;
+}
+
+.menu-item.active{
+ background:#e0e7ff;
+ color:#1e40af;
+ font-weight:bold;
+}
+
+/* ===== MAIN ===== */
+
+.main{
+ flex:1;
+ padding:30px 40px;
+}
+
+/* ===== HEADER ===== */
+
+.header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:30px;
+}
+
+.search{
+ background:white;
+ padding:12px 20px;
+ border-radius:40px;
+ width:400px;
+ border:none;
+ box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.user{
+ background:white;
+ padding:10px 18px;
+ border-radius:30px;
+ box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* ===== KPI CARDS ===== */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:20px;
+ margin-bottom:30px;
+}
+
+.card{
+ padding:20px;
+ border-radius:18px;
+ color:white;
+ box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card span{
+ font-size:32px;
+ font-weight:bold;
+}
+
+.blue{ background:linear-gradient(45deg,#3b82f6,#60a5fa);} 
+.green{ background:linear-gradient(45deg,#10b981,#34d399);} 
+.orange{ background:linear-gradient(45deg,#f59e0b,#fbbf24);} 
+.gray{ background:linear-gradient(45deg,#94a3b8,#cbd5f5);} 
+
+/* ===== TABLE ===== */
+
+.table-box{
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+.table th{
+ text-align:left;
+ padding:12px;
+ color:#64748b;
+ font-size:14px;
+}
+
+.table td{
+ padding:14px 12px;
+ border-top:1px solid #f1f5f9;
+}
+
+.badge{
+ padding:6px 12px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.badge.green{ background:#dcfce7; color:#15803d; }
+.badge.orange{ background:#fef3c7; color:#b45309; }
+.badge.blue{ background:#dbeafe; color:#1e40af; }
+
+/* ===== BOTTOM PANELS ===== */
+
+.bottom{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+ margin-top:30px;
+}
+
+.panel{
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+.panel h3{
+ margin-bottom:25px;
+}
+
+
+/* ===== PRO STATS BOX ===== */
+
+.statsGrid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:15px;
+ margin-bottom:20px;
+}
+
+.statsGrid.rdv{
+ grid-template-columns:repeat(4,1fr);
+}
+
+.statBox{
+ background:#f8fafc;
+ padding:18px;
+ border-radius:14px;
+ border:1px solid #e2e8f0;
+ text-align:center;
+}
+
+/* Hover léger PRO */
+.statBox:hover{
+ transform:translateY(-2px);
+ box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+
+.statBox span{
+ font-size:26px;
+ font-weight:bold;
+ color:#0f172a;
+}
+
+.statBox p{
+ font-size:13px;
+ color:#64748b;
+ margin-top:5px;
+}
+.statBox span{
+ font-size:30px;
+ font-weight:700;
+ color:#0f172a;
+ margin-bottom:6px;
+}
+
+.statBox p{
+ font-size:13px;
+ color:#64748b;
+}
+
+
+/* ACCENTS */
+
+.statBox.warning{ border-left:2px solid #f59e0b; }
+.statBox.success{ border-left:2px solid #10b981; }
+.statBox.danger{ border-left:2px solid #ef4444; }
+.statBox.info{ border-left:2px solid #3b82f6; }
+
+/* BUTTON */
+
+.btn{
+ width:100%;
+ padding:12px;
+ border:none;
+ border-radius:12px;
+ background:#3b82f6;
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+.btn:hover{
+ background:#2563eb;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+ <img src="logoInfoBridge.png">
+</div>
+
+<a class="menu-item active" href="index.html">Tableau de bord</a>
+<a class="menu-item" href="infobridge_dashboard.html">Planning vols</a>
+<a class="menu-item" href="bons_livraison.html">Bons de livraison</a>
+<a class="menu-item" href="reception.html">Réceptions</a>
+<a class="menu-item" href="bon_reception_wms.html">Bon Réception WMS</a>
+<a class="menu-item" href="client.html">Client</a>
+<a class="menu-item" href="historique.html">Historique</a>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+ <input class="search" placeholder="Rechercher...">
+ <div class="user">Marc Dupont</div>
+</div>
+
+<h2>Bonjour Marc, voici le résumé de vos opérations</h2>
+
+<div class="cards">
+ <div class="card blue"><h3>Total marchandises</h3><span>72</span></div>
+ <div class="card green"><h3>Reçues</h3><span>25</span></div>
+ <div class="card orange"><h3>En traitement</h3><span>38</span></div>
+ <div class="card gray"><h3>Prêtes</h3><span>9</span></div>
+</div>
+
+<div class="table-box">
+<h2>Suivi des marchandises</h2>
+
+<table class="table">
+<thead>
+<tr>
+<th>Réf</th>
+<th>Status</th>
+<th>Provenance</th>
+<th>Vol</th>
+<th>Payé</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody id="tableData"></tbody>
+</table>
+</div>
+
+<div class="bottom">
+
+<!-- FACTURATION -->
+<div class="panel">
+
+<h3>💳 Pilotage Facturation</h3>
+
+<div class="statsGrid">
+
+<div class="statBox warning">
+<span id="facturesAttente">0</span>
+<p>Factures en attente</p>
+</div>
+
+<div class="statBox danger">
+<span id="montantAttente">0 DT</span>
+<p>Montant à encaisser</p>
+</div>
+
+<div class="statBox success">
+<span id="facturesPayeesJour">0</span>
+<p>Payées aujourd’hui</p>
+</div>
+
+</div>
+
+<button class="btn">Voir détail facturation</button>
+
+</div>
+
+<!-- RDV -->
+<div class="panel">
+
+<h3>📅 Pilotage RDV Enlèvements</h3>
+
+<div class="statsGrid rdv">
+
+<div class="statBox info">
+<span id="rdvToday">0</span>
+<p>Aujourd’hui</p>
+</div>
+
+<div class="statBox info">
+<span id="rdvTomorrow">0</span>
+<p>Demain</p>
+</div>
+
+<div class="statBox warning">
+<span id="rdvPending">0</span>
+<p>Validation</p>
+</div>
+
+<div class="statBox danger">
+<span id="rdvLate">0</span>
+<p>Retards</p>
+</div>
+
+</div>
+
+<button class="btn">Voir planning enlèvements</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* TABLE DEMO */
+
+const data = [
+ {ref:"HB-4571",status:"Bon de réception",badge:"green",from:"Paris CDG",vol:"TU715",paid:"Oui",date:"24 avril"},
+ {ref:"HB-4568",status:"En cours",badge:"orange",from:"Marseille",vol:"TU881",paid:"Non",date:"24 avril"},
+ {ref:"HB-4562",status:"Reçue",badge:"blue",from:"Doha",vol:"QR1396",paid:"Non",date:"23 avril"}
+];
+
+const table = document.getElementById("tableData");
+
+data.forEach(r=>{
+ table.innerHTML += `
+ <tr>
+ <td>${r.ref}</td>
+ <td><span class="badge ${r.badge}">${r.status}</span></td>
+ <td>${r.from}</td>
+ <td>${r.vol}</td>
+ <td>${r.paid}</td>
+ <td>${r.date}</td>
+ </tr>`;
+});
+
+</script>
+
+</body>
+</html>

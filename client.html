@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Espace Client</title>
+<link rel="stylesheet" href="reception.css">
+<link rel="stylesheet" href="client.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+<div class="sidebar">
+ <img src="logoInfoBridge.png" class="logo">
+
+ <a class="menu-item" href="index.html">Dashboard</a>
+ <a class="menu-item" href="infobridge_dashboard.html">Planning vols</a>
+ <a class="menu-item" href="bons_livraison.html">Bons livraison</a>
+ <a class="menu-item" href="reception.html">Réception</a>
+ <a class="menu-item" href="bon_reception_wms.html">Bon Réception WMS</a>
+ <a class="menu-item active" href="client.html">Client</a>
+ <a class="menu-item" href="historique.html">Historique</a>
+</div>
+
+<div class="main">
+
+<h2>Espace Client</h2>
+
+<div class="card searchBox">
+<h3>Recherche Marchandise</h3>
+
+<div id="refsContainer">
+ <select class="refSelect"></select>
+</div>
+
+<button onclick="addRefSelect()" class="btnSecondary">
++ Ajouter Référence
+</button>
+
+<br><br>
+
+<button onclick="searchMultiple()" class="btnPrimary">
+Charger Marchandises
+</button>
+
+</div>
+
+
+<div id="resumeCard" class="card" style="display:none"></div>
+<div id="factureCard" class="card" style="display:none"></div>
+<div id="paiementCard" class="card" style="display:none"></div>
+<div id="rdvCard" class="card" style="display:none"></div>
+
+</div>
+</div>
+
+<script src="client.js"></script>
+
+</body>
+</html>

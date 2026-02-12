@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bons de Livraison - InfoBridge</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bons de Livraison - InfoBridge</title>
+
+<!-- ⭐ AJOUTE ICI -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+ background:linear-gradient(#e9eef7,#f7f9fc);
+ display:flex;
+ min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+ width:240px;
+ background:white;
+ padding:25px 20px;
+ box-shadow:2px 0 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+ margin-bottom:35px;
+}
+
+.logo img{
+ width:140px;
+}
+
+/* Menu */
+.menu-item{
+ display:block;
+ padding:12px 15px;
+ border-radius:10px;
+ margin-bottom:8px;
+ color:#475569;
+ text-decoration:none;
+ transition:.2s;
+}
+
+.menu-item:hover{
+ background:#eef2ff;
+ color:#2563eb;
+}
+
+.menu-item.active{
+ background:#e0e7ff;
+ color:#1e40af;
+ font-weight:bold;
+}
+
+/* Main */
+.main{
+ flex:1;
+ padding:30px 40px;
+}
+
+/* Header */
+.header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:30px;
+}
+
+.search{
+ background:white;
+ padding:12px 20px;
+ border-radius:40px;
+ width:400px;
+ border:none;
+ box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.user{
+ background:white;
+ padding:10px 18px;
+ border-radius:30px;
+ box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Cards */
+.cards{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+ margin-bottom:25px;
+}
+
+.card{
+ padding:25px;
+ border-radius:18px;
+ color:white;
+ box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h1{
+ font-size:38px;
+ margin-top:10px;
+}
+
+.blue{background:linear-gradient(45deg,#3b82f6,#60a5fa);}
+.orange{background:linear-gradient(45deg,#f59e0b,#fbbf24);}
+
+/* Table Card */
+.table-card{
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ margin-bottom:25px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+.table th{
+ text-align:left;
+ padding:12px;
+ color:#64748b;
+}
+
+.table td{
+ padding:14px 12px;
+ border-top:1px solid #f1f5f9;
+}
+
+.badge{
+ padding:6px 12px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.badge.green{background:#dcfce7;color:#15803d;}
+.badge.orange{background:#fef3c7;color:#b45309;}
+
+/* Upload */
+.upload-card{
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.upload-box{
+ border:2px dashed #fca5a5;
+ border-radius:15px;
+ padding:40px;
+ text-align:center;
+ margin-top:15px;
+}
+
+.btn-red{
+ background:#dc2626;
+ padding:12px 22px;
+ border:none;
+ border-radius:10px;
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+
+<div class="logo">
+<img src="logoTunisair.png" alt="Tunisair Logo">
+</div>
+
+<a class="menu-item" href="index.html">Tableau de bord</a>
+<a class="menu-item" href="infobridge_dashboard.html">Planning vols</a>
+<a class="menu-item active" href="bons_livraison.html">Bons de livraison</a>
+<a class="menu-item" href="reception.html">reception</a>
+<a class="menu-item" href="bon_reception_wms.html">Bon Réception WMS</a>
+<a class="menu-item" href="client.html">client</a>
+<a class="menu-item" href="historique.html">Historique</a>
+
+</div>
+
+<!-- Main -->
+<div class="main">
+
+<div class="header">
+<input class="search" placeholder="Rechercher...">
+<div class="user">Karim Jouini</div>
+</div>
+
+<h2 style="margin-bottom:25px">
+Bonjour Karim, voici le suivi de vos bons de livraison
+</h2>
+
+<!-- Cards -->
+<div class="cards">
+
+<div class="card blue">
+<p>Envoyés</p>
+<h1>4</h1>
+</div>
+
+<div class="card orange">
+<p>En transit</p>
+<h1>12</h1>
+</div>
+
+</div>
+<div style="margin-bottom:20px">
+
+<input type="file" id="fileInput" style="margin-right:15px">
+
+<button class="btn-red" onclick="importBLFile()">
+Ajouter un bon de livraison
+</button>
+
+</div>
+
+<!-- Table -->
+<div class="table-card">
+
+<h3 style="margin-bottom:15px">Résumé de vos bons de livraison</h3>
+
+<table class="table">
+
+<table class="table">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Réf</th>
+      <th>Provenance</th>
+      <th>Vol</th>
+      <th>Quantité</th>
+      <th>Etat</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody id="blTableBody">
+    <!-- Tableau vide -->
+  </tbody>
+</table>
+
+</table>
+
+</div>
+
+<!-- Upload -->
+<div class="upload-card">
+
+<h3>Envoyer un bon de livraison</h3>
+
+<div class="upload-box">
+Glissez un bon de livraison pour le transformer en bon de réception
+<br><br>
+<button class="btn-red" onclick="saveBL()">Envoyer</button>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<script>
+
+function saveBL(){
+
+ // Simulation données BL (plus tard = vrai fichier ou API)
+ const bonLivraison = [
+  { article:"Carton A", qteBL:10 },
+  { article:"Carton B", qteBL:5 },
+  { article:"Carton C", qteBL:8 }
+ ];
+
+ // Sauvegarde navigateur
+ localStorage.setItem("bonLivraison", JSON.stringify(bonLivraison));
+
+ alert("Bon de livraison envoyé vers réception !");
+
+}
+
+</script>
+
+<script>
+
+function importBLFile(){
+
+ const file = document.getElementById("fileInput").files[0];
+
+ if(!file){
+  alert("Choisir fichier Excel !");
+  return;
+ }
+
+ const reader = new FileReader();
+
+ reader.onload = function(e){
+
+  const data = new Uint8Array(e.target.result);
+
+  const workbook = XLSX.read(data, { type: "array" });
+
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+  const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+  const tableBody = document.getElementById("blTableBody");
+
+  jsonData.forEach((row, index) => {
+
+ const ref = "BL-" + Date.now() + "-" + index;
+
+ const quantite = row.quantite || row.qte || row.quantity || 0;
+
+ tableBody.innerHTML += `
+ <tr>
+  <td>${ref}</td>
+  <td>${row.provenance || "-"}</td>
+  <td>${row.vol || "-"}</td>
+  <td>${quantite}</td>
+  <td><span class="badge green">Importé</span></td>
+  <td>${new Date().toLocaleDateString()}</td>
+ </tr>
+ `;
+
+});
+
+  localStorage.setItem("bonLivraison", JSON.stringify(jsonData));
+
+  alert("Excel importé avec succès !");
+
+ };
+
+ reader.readAsArrayBuffer(file);
+}
+
+</script>

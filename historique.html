@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historique - InfoBridge</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body{background:linear-gradient(#e9eef7,#f7f9fc);display:flex;min-height:100vh;}
+
+.sidebar{
+ width:240px;
+ background:white;
+ padding:25px 20px;
+ box-shadow:2px 0 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+ font-size:22px;
+ font-weight:bold;
+ color:#2563eb;
+ margin-bottom:40px;
+}
+
+.menu-item{
+ display:block;
+ padding:12px 15px;
+ border-radius:10px;
+ margin-bottom:8px;
+ color:#475569;
+ text-decoration:none;
+}
+
+.menu-item:hover{
+ background:#eef2ff;
+ color:#2563eb;
+}
+
+.menu-item.active{
+ background:#e0e7ff;
+ color:#1e40af;
+ font-weight:bold;
+}
+
+.main{
+ flex:1;
+ padding:30px 40px;
+}
+
+.table-box{
+ background:white;
+ padding:25px;
+ border-radius:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,0.05);
+ margin-top:20px;
+}
+
+.table{
+ width:100%;
+ border-collapse:collapse;
+}
+
+.table th{
+ text-align:left;
+ padding:12px;
+ color:#64748b;
+}
+
+.table td{
+ padding:14px 12px;
+ border-top:1px solid #f1f5f9;
+}
+
+.badge{
+ padding:6px 12px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.badge.green{ background:#dcfce7;color:#15803d;}
+.badge.blue{ background:#dbeafe;color:#1e40af;}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<div class="logo">InfoBridge</div>
+
+<a class="menu-item" href="index.html">Tableau de bord</a>
+<a class="menu-item" href="infobridge_dashboard.html">Planning vols</a>
+<a class="menu-item active" href="bons_livraison.html">Bons de livraison</a>
+<a class="menu-item" href="reception.html">Réceptions</a>
+<a class="menu-item" href="bon_reception_wms.html">Bon Réception WMS</a>
+<a class="menu-item" href="client.html">client</a>
+<a class="menu-item active" href="historique.html">Historique</a>
+
+</div>
+
+<div class="main">
+
+<h2>Historique des opérations</h2>
+
+<div class="table-box">
+<table class="table">
+
+<tr>
+<th>Date</th>
+<th>Action</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>24 Avril</td>
+<td>Réception marchandise</td>
+<td><span class="badge green">Validé</span></td>
+</tr>
+
+<tr>
+<td>23 Avril</td>
+<td>Paiement facture</td>
+<td><span class="badge blue">Payé</span></td>
+</tr>
+
+</table>
+</div>
+
+</div>
+
+</body>
+</html>
